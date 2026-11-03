@@ -33,6 +33,7 @@ Replika modern sekaligus **laporan reverse engineering** dari `searchpinterest.v
 - [Perbedaan dengan situs asli](#-perbedaan-dengan-situs-asli)
 - [Struktur proyek](#-struktur-proyek)
 - [Roadmap](#-roadmap)
+- [Creator](#-creator)
 - [Lisensi](#-lisensi)
 
 ---
@@ -51,6 +52,7 @@ Replika modern sekaligus **laporan reverse engineering** dari `searchpinterest.v
 | 🧠 **Riwayat pencarian** | 10 query terakhir, bisa dibersihkan, muncul saat input difokuskan |
 | ♾️ **Progressive render** | Kartu dirender per 16 item saat mendekati viewport (IntersectionObserver) |
 | 🔗 **Deep link** | `?nama=Tamu&q=kucing&theme=dark` — bisa dibagikan langsung |
+| 👤 **Menu creator** | Profil pembuat proyek (identitas sekolah & jurusan), bisa dibuka dari topbar atau footer |
 | 🛡️ **Anti-CORS berlapis** | Proxy sendiri → API langsung → proxy publik (fallback otomatis) |
 | ♿ **Aksesibilitas** | Landmark, `aria-*`, fokus terlihat, dukungan `prefers-reduced-motion` |
 | 📦 **Nol dependensi frontend** | Tanpa framework, tanpa CDN ikon (SVG sprite inline), tanpa build step |
@@ -262,6 +264,27 @@ dih-pinterest-replica/
 - [ ] PWA offline cache untuk pin yang sudah dibuka
 - [ ] Service worker + shell cache untuk buka instan
 - [ ] Opsi scraper sendiri (RSS Pinterest) sebagai pengganti API pihak ketiga
+
+---
+
+## 👤 Creator
+
+<div align="center">
+<img src="docs/creator.png" alt="Menu creator" width="720">
+</div>
+
+| | |
+|---|---|
+| **Nama** | Hizkia Letwar |
+| **Username** | Nihongo? |
+| **Sekolah** | SMK Negeri 1 Maluku Tengah |
+| **Kelas** | XI |
+| **Jurusan** | Teknik Jaringan Komputer dan Telekomunikasi (TJKT) |
+| **GitHub** | [@Ikyletwar](https://github.com/Ikyletwar) |
+
+Menu creator dapat dibuka lewat tombol **ⓘ** di topbar atau tautan nama pada footer.
+Isinya dirender sebagai modal dengan `role="dialog"`, `aria-modal`, tombol tutup,
+klik backdrop, dan `Esc`.
 
 ---
 

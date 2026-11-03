@@ -546,6 +546,33 @@ $("#filter-bar").addEventListener("click", e => {
   if (chip) setFilter(chip.dataset.filter);
 });
 
+/* ===== Menu Creator ===== */
+const creatorModal = $("#creator-modal");
+let creatorOpener = null;
+
+function openCreator(ev) {
+  creatorOpener = ev && ev.currentTarget ? ev.currentTarget : null;
+  creatorModal.classList.add("open");
+  creatorModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  $("#creator-close").focus();
+}
+function closeCreator() {
+  creatorModal.classList.remove("open");
+  creatorModal.setAttribute("aria-hidden", "true");
+  if (!els.lightbox.classList.contains("open")) document.body.style.overflow = "";
+  if (creatorOpener && typeof creatorOpener.focus === "function") creatorOpener.focus();
+  creatorOpener = null;
+}
+$("#creator-btn").addEventListener("click", openCreator);
+$("#foot-creator-btn").addEventListener("click", openCreator);
+$("#creator-close").addEventListener("click", closeCreator);
+$("#creator-close-2").addEventListener("click", closeCreator);
+creatorModal.addEventListener("click", e => { if (e.target === creatorModal) closeCreator(); });
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && creatorModal.classList.contains("open")) closeCreator();
+});
+
 /* ===== Init ===== */
 initTheme();
 renderSuggest();
