@@ -95,13 +95,13 @@ Contoh nyata hasil pencarian di app (bukan mockup) — screenshot diambil langsu
 
 ### ⚔️ “rimuru tempest”
 
-<img src="docs/anime-rimuru.png" alt="Hasil pencarian rimuru tempest" width="860">
+<img src="docs/anime-rimuru.jpg" alt="Hasil pencarian rimuru tempest" width="860">
 
 *Mode terang · 5 hasil · filter Foto aktif · sumber data `zelora-api`.*
 
 ### 🌸 “totsuka”
 
-<img src="docs/anime-totsuka.png" alt="Hasil pencarian totsuka" width="860">
+<img src="docs/anime-totsuka.jpg" alt="Hasil pencarian totsuka" width="860">
 
 *Mode gelap · 6 hasil · masonry responsif mengikuti rasio asli tiap media.*
 
