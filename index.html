@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dih Pinterest — Pencarian Foto & Video Pinterest</title>
+<meta name="description" content="Pencarian foto dan video Pinterest dengan filter media, tampilan penuh, download resolusi asli, dan mode gelap. Statis, cepat, dan open source.">
+<meta name="theme-color" content="#ff6b35">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Dih Pinterest">
+<meta property="og:description" content="Cari foto & video Pinterest, lihat resolusi penuh, dan download media pilihanmu.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="id_ID">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data: blob: https:; media-src 'self' https: blob:; connect-src 'self' https://zelora-api.vercel.app https://corsproxy.io https://api.allorigins.win https://api.ipify.org https://api64.ipify.org; style-src 'self' 'unsafe-inline'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="manifest" href="assets/site.webmanifest">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- SVG icon sprite (tanpa dependensi eksternal) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-fire" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8c0-4.02-2.02-7.13-6.5-13.33z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 13 5.22 3.13a1 1 0 0 0 1.5-.86V8.73a1 1 0 0 0-1.5-.86L16 11"/><rect x="2" y="6" width="14" height="12" rx="2"/></symbol>
+  <symbol id="i-film" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 4v16M17 4v16M2 9h5M2 15h5M17 9h5M17 15h5"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 4.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></symbol>
+  <symbol id="i-ghost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 10h.01M15 10h.01M12 2a8 8 0 0 0-8 8v12l3-3 2.5 2.5L12 19l2.5 2.5L17 19l3 3V10a8 8 0 0 0-8-8z"/></symbol>
+  <symbol id="i-warning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+</svg>
+
+<!-- Gate nama (identitas lokal; bisa dilewati) -->
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <form class="gate-box" id="gate-form">
+    <div class="gate-icon" aria-hidden="true"><svg><use href="#i-fire"/></svg></div>
+    <h2 id="gate-title">Mau masuk?</h2>
+    <p>Isi nama biar pengalamanmu lebih personal. Semua tersimpan di perangkat ini saja.</p>
+    <input type="text" id="nama-input" placeholder="Nama kamu..." maxlength="40" autocomplete="off" aria-label="Nama kamu">
+    <button type="submit" class="btn btn-primary btn-block"><svg><use href="#i-arrow-right"/></svg> Masuk</button>
+    <button type="button" class="btn btn-ghost btn-block" id="gate-skip">Masuk sebagai Tamu</button>
+  </form>
+</div>
+
+<!-- Aplikasi utama -->
+<div class="container" id="app" hidden>
+<header class="topbar">
+  <div class="logo">
+    <span class="logo-mark" aria-hidden="true"><svg><use href="#i-fire"/></svg></span>
+    <h1>Dih <span>Pinterest</span></h1>
+  </div>
+  <div class="topbar-actions">
+    <div class="user-badge" id="user-badge" title="Klik untuk ganti nama"><svg><use href="#i-user"/></svg> <span id="display-nama">—</span></div>
+    <button class="icon-btn" id="theme-toggle" aria-label="Ganti mode gelap/terang"><svg class="icon-moon"><use href="#i-moon"/></svg><svg class="icon-sun"><use href="#i-sun"/></svg></button>
+  </div>
+</header>
+
+<p class="tagline">Search · Foto · Video · Full View · Download resolusi asli</p>
+
+<div class="search-box">
+  <div class="input-row">
+    <div class="input-wrap">
+      <svg class="input-icon" aria-hidden="true"><use href="#i-search"/></svg>
+      <input type="text" id="query" placeholder="Cari apa aja di Pinterest..." autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="history-pop" aria-label="Kata kunci pencarian">
+      <button class="input-clear" id="query-clear" aria-label="Hapus teks" hidden><svg><use href="#i-x"/></svg></button>
+      <div class="history-pop" id="history-pop" role="listbox" hidden></div>
+    </div>
+    <button class="btn btn-primary btn-search" id="search-btn"><svg><use href="#i-search"/></svg> CARI</button>
+  </div>
+
+  <div class="suggest" id="suggest" aria-label="Kata kunci populer"></div>
+
+  <div class="filter-bar" id="filter-bar" hidden>
+    <span class="filter-label"><svg><use href="#i-grid"/></svg> FILTER:</span>
+    <button class="chip active" data-filter="all"><svg><use href="#i-grid"/></svg> Semua <span class="count" id="count-all">0</span></button>
+    <button class="chip" data-filter="foto"><svg><use href="#i-image"/></svg> Foto <span class="count" id="count-foto">0</span></button>
+    <button class="chip" data-filter="video"><svg><use href="#i-video"/></svg> Video <span class="count" id="count-video">0</span></button>
+    <button class="chip" data-filter="gif"><svg><use href="#i-film"/></svg> GIF <span class="count" id="count-gif">0</span></button>
+    <button class="chip" data-filter="saved"><svg><use href="#i-heart"/></svg> Tersimpan <span class="count" id="count-saved">0</span></button>
+  </div>
+</div>
+
+<div class="status-line" id="status-line" aria-live="polite"></div>
+
+<div id="loader" class="loader" hidden>
+  <div class="spinner" aria-hidden="true"></div>
+  <p>Lagi nyari...</p>
+</div>
+
+<div id="results" class="masonry" aria-label="Hasil pencarian"></div>
+
+<div class="sentinel" id="sentinel" aria-hidden="true"></div>
+<p class="load-hint" id="load-hint" hidden>Menampilkan semua hasil</p>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Pratinjau media" aria-hidden="true">
+  <div class="lb-content" id="lb-content"></div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>

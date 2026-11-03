@@ -1,0 +1,13 @@
+{
+  "name": "Dih Pinterest",
+  "short_name": "DihPin",
+  "description": "Pencarian foto & video Pinterest dengan tampilan masonry, mode gelap, dan download resolusi asli.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f0ebe3",
+  "theme_color": "#ff6b35",
+  "lang": "id",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
