@@ -15,7 +15,11 @@ Replika modern sekaligus **laporan reverse engineering** dari `searchpinterest.v
 
 <img src="docs/screenshot.png" alt="Tampilan mode terang" width="820">
 <br>
-<img src="docs/screenshot-dark.png" alt="Tampilan mode gelap" width="820">
+<img src="docs/screenshot-dark.png" alt="Tampilan mode gelap — hasil pencarian anime art" width="820">
+<br>
+<img src="docs/anime-rimuru.jpg" alt="Hasil pencarian rimuru tempest" width="820">
+<br>
+<img src="docs/anime-totsuka.jpg" alt="Hasil pencarian totsuka" width="820">
 
 </div>
 
@@ -25,7 +29,6 @@ Replika modern sekaligus **laporan reverse engineering** dari `searchpinterest.v
 
 - [Fitur](#-fitur)
 - [Arsitektur](#-arsitektur)
-- [Galeri hasil pencarian](#-galeri-hasil-pencarian)
 - [Cara pakai](#-cara-pakai)
 - [Deploy](#-deploy)
 - [Hasil reverse engineering (laporan)](#-hasil-reverse-engineering-laporan)
@@ -85,25 +88,6 @@ berfungsi di GitHub Pages (statis), Vercel (serverless), maupun `file://`:
 3. `corsproxy.io` → `allorigins.win` — proxy publik, dipakai bila CORS gagal.
 
 Status sumber data ditampilkan di UI, mis. `(zelora-api)` atau `(proxy-sendiri)`.
-
----
-
-## 🖼️ Galeri hasil pencarian
-
-Contoh nyata hasil pencarian di app (bukan mockup) — screenshot diambil langsung dari
-[halaman live](https://ikyletwar.github.io/dih-pinterest-replica/) memakai headless Chromium.
-
-### ⚔️ “rimuru tempest”
-
-<img src="docs/anime-rimuru.jpg" alt="Hasil pencarian rimuru tempest" width="860">
-
-*Mode terang · 5 hasil · filter Foto aktif · sumber data `zelora-api`.*
-
-### 🌸 “totsuka”
-
-<img src="docs/anime-totsuka.jpg" alt="Hasil pencarian totsuka" width="860">
-
-*Mode gelap · 6 hasil · masonry responsif mengikuti rasio asli tiap media.*
 
 ---
 
